@@ -1,12 +1,20 @@
 import React from 'react'
 
-const History = ({history}) => {
+const History = ({history,moveTo, currentMove}) => {
   return (
     <ul>{
             history.map((_, move)=> {
                 return ( 
                 <li key={move}>
-             <button type ="button">{move ===0 ? 'Go to game start' : `Go to move #${move}`}</button>
+             <button 
+             style={{
+                fontweight: move=== currentMove ? 'bold' : 'normal',
+             }}
+             type ="button" onClick ={()=>{
+                moveTo(move);
+             }}>
+                {move ===0 ? 'Go to game start' : `Go to move #${move}`}
+                </button>
              </li>
                 );
             })

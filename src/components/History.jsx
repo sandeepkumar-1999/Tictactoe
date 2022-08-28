@@ -2,14 +2,13 @@ import React from 'react'
 
 const History = ({history,moveTo, currentMove}) => {
   return (
-    <ul>{
-            history.map((_, move)=> {
+   <div className="history-wrapper">
+      <ul className="history">
+      {history.map((_, move)=> {
                 return ( 
                 <li key={move}>
              <button 
-             style={{
-                fontweight: move=== currentMove ? 'bold' : 'normal',
-             }}
+             className={`btn-move ${move === currentMove ? 'active' : ''}`}
              type ="button" onClick ={()=>{
                 moveTo(move);
              }}>
@@ -19,8 +18,8 @@ const History = ({history,moveTo, currentMove}) => {
                 );
             })
             }
-        
         </ul>
+    </div>
   );
 };
 
